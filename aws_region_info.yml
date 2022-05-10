@@ -1,6 +1,4 @@
 ---
 - name: aws_region_info ansible module
   hosts: localhost
-
-tasks:
 - aws_region_info:
