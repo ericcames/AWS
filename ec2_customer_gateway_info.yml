@@ -1,6 +1,7 @@
 ---
 - name: example from docs.ansible.com for AWS module
   hosts: localhost
+  gather_facts: no
   
   tasks:
   
