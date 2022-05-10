@@ -7,3 +7,8 @@
   - name: Gather information about all customer gateways
     ec2_customer_gateway_info:
       region: us-west-1
+    register: cust_gw_info
+    
+  - name: Output cust_gw_info
+    debug:
+      var: cust_gw_info
