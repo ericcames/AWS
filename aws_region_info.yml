@@ -4,4 +4,4 @@
 
 tasks:
   - name: run the module
-    aws_region_info:
+    - aws_region_info:
