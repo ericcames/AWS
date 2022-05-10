@@ -1,0 +1,8 @@
+---
+- name: example from docs.ansible.com for AWS module
+  hosts: localhost
+  
+  tasks:
+  
+  - name: Gather information about all customer gateways
+    ec2_customer_gateway_info:
