@@ -6,3 +6,4 @@
   
   - name: Gather information about all customer gateways
     ec2_customer_gateway_info:
+      region: us-west-1b
