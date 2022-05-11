@@ -1,0 +1,18 @@
+---
+- name: Install and Configure OpenSSH Server
+  hosts: all
+  gather_facts: yes
+
+  tasks:
+
+  - name: Copy powershell script into place
+    ansible.builtin.win_copy:
+      src: files_to_copy/install_config_sshd.ps1
+      dest: C:\Temp\install_config_sshd.ps1
+  
+  - name: Issue the powershell command to give the current cumputer info
+    ansible.builtin.win_shell: C:\Temp\install_config_sshd.ps1
+    register: powershellresult
+
+  - debug:
+      var: powershellresult
