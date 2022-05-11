@@ -2,6 +2,9 @@
 - name: Install and Configure OpenSSH Server
   hosts: all
   gather_facts: yes
+  vars:
+    ansible_connection: ssh
+    ansible_shell_type: cmd
 
   tasks:
 

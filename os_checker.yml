@@ -1,0 +1,14 @@
+---
+- name: manage state of Windows/RHEL servers
+  hosts: all
+  gather_facts: yes
+
+  tasks:
+
+    - name: Print all available gather_facts
+      ansible.builtin.debug:
+        var: ansbile_facts
+
+    - name: Print os ansible_shell_type
+      ansible.builtin.debug:
+        var: ansible_distribution
