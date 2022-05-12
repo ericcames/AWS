@@ -1,12 +1,8 @@
 ---
 - name: Install and Configure OpenSSH Server
-  hosts: ec2-18-144-86-29.us-west-1.compute.amazonaws.com
+  hosts: all
   gather_facts: yes
-  vars:
-    ansible_connection: winrm
-    ansible_winrm_transport: basic
-    ansible_winrm_cert_validation: ignore
-
+  
   tasks:
 
   - name: Copy powershell script into place
