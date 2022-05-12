@@ -1,6 +1,6 @@
 ---
 - name: Install and Configure OpenSSH Server
-  hosts: all
+  hosts: ec2-54-219-169-50.us-west-1.compute.amazonaws.com
   gather_facts: yes
   vars:
     ansible_connection: ssh
