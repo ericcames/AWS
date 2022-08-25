@@ -78,7 +78,7 @@
     - name: create security group {{ ec2_security_group_name }}
       amazon.aws.ec2_group:
         name: "{{ ec2_security_group_name }}"
-        description: Security group with rule descriptions created by Ansible
+        description: Ansible
         vpc_id: "{{ my_vpc.vpc.id }}"
         region: "{{ region }}"
         tags:
