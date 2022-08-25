@@ -95,9 +95,9 @@
           cidr_ip: 0.0.0.0/0
           rule_desc: allow ping
         - proto: tcp
-          ports: "{{ open_ports_list }}"
+          ports: 22
           cidr_ip: 0.0.0.0/0
-          rule_desc: allow all on port {{open_ports_list}}
+          rule_desc: allow all on port 22
 
       tags:
         - createsecgrp
