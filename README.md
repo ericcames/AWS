@@ -1,2 +1,1 @@
-# AWS
-My AWS stuff
+# Amazon Web Services (AWS)
