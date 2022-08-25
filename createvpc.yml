@@ -4,8 +4,8 @@
     connection: local
     gather_facts: no
     vars:
-       aws_access_key: ''
-       aws_secret_key: ''
+       aws_access_key: '' # passed from Ansible Controller Credentials
+       aws_secret_key: '' # passed from Ansible Controller Credentials
        ec2_ansible_group: "{{ user_name }}"
        ec2_security_group_name: "{{vpc_name}}_SECGRP"
        ec2_vpc_subnet_name: "{{vpc_name}}_Subnet"
