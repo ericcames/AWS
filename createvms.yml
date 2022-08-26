@@ -60,6 +60,7 @@
     - name: Creating {{count}} AWS VMs in {{region}}
       amazon.aws.ec2_instance:
         name: "Web Server"
+        region: "{{region}}"
         #key_name: "prod-ssh-key"
         #vpc_subnet_id: subnet-5ca1ab1e
         instance_type: "{{instance_type}}"
