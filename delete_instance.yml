@@ -9,8 +9,8 @@
 
     tasks:
 
-    - name: Get instances id with tag {{name}} in {{region}}
-      ec2_instance_info:
+    - name: Get instances id with tag {{servername}} in {{region}}
+      amazon.aws.ec2_instance_info:
        region: "{{region}}"
        filters:
          "tag:Name": "{{servername}}"
