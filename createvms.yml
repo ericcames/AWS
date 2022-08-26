@@ -14,10 +14,10 @@
       fail: msg='Please include the subnet_name to the variable "subnet_name"'
       run_once: true
       when: 'subnet_name is not defined'
-    - name: 'Preflight Varible check :: key_name'
-      fail: msg='Please include the key_name to the variable "key_name"'
-      run_once: true
-      when: 'key_name is not defined'
+    #- name: 'Preflight Varible check :: key_name'
+    #  fail: msg='Please include the key_name to the variable "key_name"'
+    #  run_once: true
+    #  when: 'key_name is not defined'
     - name: 'Preflight Varible check :: image'
       fail: msg='Please include the image to the variable "image"'
       run_once: true
@@ -38,21 +38,7 @@
       fail: msg='Please include the alwaysup to the variable "alwaysup"'
       run_once: true
       when: 'alwaysup is not defined'
-    - name: 'Preflight Varible check :: server_pre_name'
-      fail: msg='Please include the server_pre_name to the variable "server_pre_name"'
-      run_once: true
-      when: 'server_pre_name is not defined'
-    - name: 'Preflight Varible check :: deleteby'
-      fail: msg='Please include the deleteby to the variable "deleteby"'
-      run_once: true
-      when: 'deleteby is not defined'
-    - name: 'Preflight Varible check :: group'
-      fail: msg='Please include the group to the variable "group"'
-      run_once: true
-      when: 'group is not defined'  
-
-
-
+  
     - name: If vpc_subnet_id doesn't exist lookup by {{subnet_name}}
       block:
       - name: Looking Up Subnet_id for {{subnet_name}} if vpc_subnet_id doesn't exist
@@ -72,22 +58,18 @@
         msg: "{{vpc_subnet_id}}"
 
     - name: Creating {{count}} AWS VMs in {{region}}
-      ec2:
-       key_name: "{{key_name}}"
-       instance_type: "{{instance_type}}"
-       image:  "{{image}}"
-       wait: "{{wait}}"
-       group: "{{ec2_security_group_name}}"
-       wait_timeout: 500
-       count: "{{count}}"
-       region: "{{region}}"
-       vpc_subnet_id:  "{{vpc_subnet_id}}"
-       assign_public_ip: "{{assign_public_ip}}"
-       instance_tags:
-         AlwaysUp: "{{alwaysup}}"
-         Name: "{{server_pre_name}}"
-         ansible_group: "{{ec2_ansible_group}}"
-         Createdby: Ansible Tower
-         Contact: "{{my_email_address}}"
-         DeletebBy: "{{deleteby}}"
-         Type: "{{group}}"
+      amazon.aws.ec2_instance:
+        name: "Web Server"
+        #key_name: "prod-ssh-key"
+        #vpc_subnet_id: subnet-5ca1ab1e
+        instance_type: "{{instance_type}}"
+        security_group: "{{ec2_security_group_name}}"
+        network:
+          assign_public_ip: "{{assign_public_ip}}"
+        image_id: "{{image}}"
+        tags:
+          Environment: Web Demo
+          AlwaysUp: "{{alwaysup}}"
+          Createdby: Ansible Tower
+          Contact: "{{my_email_address}}"
+          DeletebBy: "{{ec2_ansible_group}}"
