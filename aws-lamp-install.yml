@@ -1,0 +1,40 @@
+---
+- name: Setup a LAMP Stack
+  hosts: all
+  gather_facts: false
+  
+  tasks:
+    
+    - name: Install the latest version of Firewalld, Apache, Mariadb, php
+      ansible.builtin.dnf:
+        name: 
+          - firewalld
+          - httpd
+          - mariadb-server
+          - php
+        state: latest
+    
+    - name: Start everything up and enable it.
+      ansible.builtin.systemd:
+        state: started
+        name:
+          - firewalld
+          - httpd
+          - mariadb-server
+          - php
+          - php-mysqlnd
+        enabled: yes
+    
+    - name: Update the firewall for port 80 and 443
+      ansible.posix.firewalld:
+        service:
+          - https
+          - http
+        permanent: yes
+        state: enabled
+    
+    - name: Tune the SELinux policy to allow Apache to make network connections to a database 
+      ansible.posix.seboolean:
+        name: httpd_can_network_connect_db
+        state: yes
+        persistent: yes
