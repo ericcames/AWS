@@ -36,12 +36,6 @@
     - name: Starting php
       ansible.builtin.systemd:
         state: started
-        name: php
-        enabled: yes
-
-    - name: Starting php
-      ansible.builtin.systemd:
-        state: started
         name: php-mysqlnd
         enabled: yes
 
