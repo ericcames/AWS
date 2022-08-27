@@ -30,7 +30,7 @@
     - name: Starting mariadb-server
       ansible.builtin.systemd:
         state: started
-        name: mariadb-server
+        name: mariadb
         enabled: yes
     
     - name: Starting php
