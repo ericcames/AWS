@@ -33,12 +33,6 @@
         name: mariadb
         enabled: yes
     
-    - name: Starting php
-      ansible.builtin.systemd:
-        state: started
-        name: php-mysqlnd
-        enabled: yes
-
     - name: Update the firewall for port 80 and 443
       ansible.posix.firewalld:
         service:
