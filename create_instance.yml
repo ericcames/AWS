@@ -32,7 +32,7 @@
       amazon.aws.ec2_instance:
         name: "Web Server"
         region: "{{region}}"
-        key_name: "id_rsa.pub"
+        key_name: "eames-pub-key"
         vpc_subnet_id: "{{vpc_subnet_id}}"
         instance_type: "{{instance_type}}"
         security_group: "{{ec2_security_group_name}}"
