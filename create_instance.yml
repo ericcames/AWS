@@ -45,3 +45,12 @@
           Createdby: Ansible Tower
           Contact: "{{my_email_address}}"
           DeletebBy: "{{ec2_ansible_group}}"
+      
+    - name: allocate eip from pool - check if tag reserved_for exists and value is our hostname
+      community.aws.ec2_eip:
+        region: "{{region}}"
+        in_vpc: true
+        reuse_existing_ip_allowed: true
+        tag_name: reserved_for
+        tag_value: "{{ inventory_hostname }}"
+        public_ipv4_pool: ipv4pool-ec2-0588c9b75a25d1a02
