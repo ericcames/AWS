@@ -38,7 +38,7 @@
         service: https
         permanent: yes
         state: enabled
-        immeadiate: yes
+        immediate: yes
         zone: public    
 
     - name: Update the firewall for port 80
@@ -46,7 +46,7 @@
         service: http
         permanent: yes
         state: enabled
-        immeadiate: yes
+        immediate: yes
         zone: public
     
     - name: Tune the SELinux policy to allow Apache to make network connections to a database 
