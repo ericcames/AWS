@@ -52,8 +52,7 @@
         region: "{{region}}"
         in_vpc: true
         reuse_existing_ip_allowed: true
-        tag_name: Environment
-        tag_value: Web Demo
+        device_id: "{{instance_id}}"
         register: instance_eip
     
     - debug: var=instance_eip.public_ip
