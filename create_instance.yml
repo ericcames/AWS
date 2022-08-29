@@ -53,4 +53,3 @@
         reuse_existing_ip_allowed: true
         tag_name: reserved_for
         tag_value: "{{ inventory_hostname }}"
-        public_ipv4_pool: ipv4pool-ec2-0588c9b75a25d1a02
