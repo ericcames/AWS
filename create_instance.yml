@@ -2,7 +2,7 @@
   - name: Get instances info
     hosts: localhost
     connection: local
-    gather_facts: yes
+    gather_facts: no
     vars:
        ec2_security_group_name: "{{vpc_name}}_SECGRP"
        ec2_ansible_group: "{{user_name}}"
@@ -45,14 +45,3 @@
           Createdby: Ansible Tower
           Contact: "{{my_email_address}}"
           DeletebBy: "{{ec2_ansible_group}}"
-      
-    - name: Allocating elastic IP to Instance
-      community.aws.ec2_eip:
-        state: present
-        region: "{{region}}"
-        in_vpc: true
-        reuse_existing_ip_allowed: true
-        device_id: "{{instance_id}}"
-        register: instance_eip
-    
-    - debug: var=instance_eip.public_ip
