@@ -2,7 +2,7 @@
   - name: Get instances info
     hosts: localhost
     connection: local
-    gather_facts: no
+    gather_facts: yes
     vars:
        ec2_security_group_name: "{{vpc_name}}_SECGRP"
        ec2_ansible_group: "{{user_name}}"
