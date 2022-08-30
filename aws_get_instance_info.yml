@@ -13,4 +13,4 @@
 
       - name: Printing the public dns name
         ansible.builtin.debug:
-          msg:  "The pub dns name is {{ec2_node_info.public_dns_name}}"
+          var:  ec2_node_info.public_dns_name
