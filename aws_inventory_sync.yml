@@ -1,12 +1,12 @@
 ---
-  - name: Testing the URI module to login to AAP
+  - name: Login to the AAP API and kick off a inventory sync
     hosts: localhost
     connection: local
     gather_facts: no
 
     tasks:
 
-      - name: Login to a form based webpage, then use the returned cookie to access the app in later tasks
+      - name: Get an AAP API Token and store it as new_token
         ansible.builtin.uri:
           url: "https://{{ tower_url }}/api/v2/tokens/"
           method: POST
@@ -18,11 +18,11 @@
           return_content: yes       
         register: new_token
 
-      - name: Debug token
+      - name: Print out the new token
         debug: 
           msg: "{{ new_token.json.token }}"
 
-      - name: AWS Inventory Sync
+      - name: Kick off an inventory sync
         ansible.builtin.uri:
           url: "https://{{ tower_url }}/api/v2/inventory_sources/72/update/"
           headers:
