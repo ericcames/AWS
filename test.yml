@@ -1,0 +1,27 @@
+---
+  - name: Testing the URI module
+    hosts: localhost
+    connection: local
+    gather_facts: no
+
+    tasks:
+
+      - name: Login to a form based webpage, then use the returned cookie to access the app in later tasks
+        ansible.builtin.uri:
+          url: https://ericames.ddns.net/api/login/
+          method: POST
+          body_format: form-urlencoded
+          body:
+            name: "{{ username }}"
+            password: "{{ password}}"
+            enter: Sign in
+          status_code: 302
+        register: login
+
+      - name: AWS Inventory Sync
+        ansible.builtin.uri:
+          url: https://ericames.ddns.net/api/v2/inventory_sources/72/update/
+          method: POST
+          return_content: yes
+          headers:
+            Cookie: "{{ login.cookies_string }}"
