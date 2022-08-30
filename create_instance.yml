@@ -46,9 +46,9 @@
           Contact: "{{my_email_address}}"
           DeletebBy: "{{ec2_ansible_group}}"
 
-    - name: Refresh inventory to ensure new instances exist in inventory
-      ansible.builtin.meta: refresh_inventory
-
     - name: Pause for 2 minutes to build app cache
       ansible.builtin.pause:
         minutes: 2
+
+    - name: Refresh inventory to ensure new instances exist in inventory
+      ansible.builtin.meta: refresh_inventory
