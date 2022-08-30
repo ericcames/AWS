@@ -13,4 +13,4 @@
 
       - name: Printing the public dns name
         ansible.builtin.debug:
-          msg:  "{{ec2_node_info.network_interfaces}}"
+          msg:  "{{ec2_node_info.instance_ids}}"
