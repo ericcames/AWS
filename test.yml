@@ -1,5 +1,5 @@
 ---
-  - name: Testing the URI module
+  - name: Testing the URI module to login to AAP
     hosts: localhost
     connection: local
     gather_facts: no
@@ -8,22 +8,20 @@
 
       - name: Login to a form based webpage, then use the returned cookie to access the app in later tasks
         ansible.builtin.uri:
-          url: https://ericames.ddns.net/api/o/authorize/
-          method: GET
-          body_format: form-urlencoded
-          force: yes
-          follow_redirects: yes
-          body:
-            name: "{{ username }}"
-            password: "{{ password}}"
-            enter: Sign in
-          status_code: 302
-        register: login
+          url: "https://{{ tower_url }}/api/v2/tokens"
+          method: POST
+          user: "{{ username }}"
+          password: "{{ password }}"
+          validate_certs: no
+          force_basic_auth: yes
+          status_code: 201
+          return_content: yes       
+        register: token
 
       - name: AWS Inventory Sync
         ansible.builtin.uri:
-          url: https://ericames.ddns.net/api/v2/inventory_sources/72/update/
+          url: https://{{ tower_url }}/api/v2/inventory_sources/72/update/
           method: POST
           return_content: yes
           headers:
-            Cookie: "{{ login.cookies_string }}"
+            Cookie: "{{ token.cookies_string }}"
