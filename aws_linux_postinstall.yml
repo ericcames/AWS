@@ -6,6 +6,7 @@
     - name: Upgrade all packages
       ansible.builtin.yum:
         name: '*'
+        security: yes
         state: latest
    
     - name: Copy the sshd-banner file into place
