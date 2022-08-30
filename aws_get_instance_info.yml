@@ -9,8 +9,9 @@
       - name: Get instances id with tag {{name}} in {{region}}
         amazon.aws.ec2_instance_info:
           region: "{{region}}"
+        key_name: public_dns_name
         register: ec2_node_info
 
       - name: foobar
         ansible.builtin.debug:
-          msg: "{{ec2_node_info.instances.public_dns_name}}"
+          msg: "{{ec2_node_info}}"
