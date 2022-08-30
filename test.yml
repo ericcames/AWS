@@ -25,7 +25,15 @@
       - name: AWS Inventory Sync
         ansible.builtin.uri:
           url: "https://{{ tower_url }}/api/v2/inventory_sources/72/update/"
-          method: POST
-          return_content: yes
           headers:
-            Cookie: "{{ new_token.json.token }}"
+            Authorization: "Bearer {{ new_token.json.token }}"
+            Content-Type: "application/json"
+          validate_certs: no
+          follow_redirects: all
+          return_content: yes
+          method: "POST"
+        register: output
+
+      - name: Print output
+        debug:
+          msg: "{{ output }}"
