@@ -8,8 +8,8 @@
 
       - name: Login to a form based webpage, then use the returned cookie to access the app in later tasks
         ansible.builtin.uri:
-          url: https://ericames.ddns.net/api/login/
-          method: POST
+          url: https://ericames.ddns.net/api/o/authorize/
+          method: GET
           body_format: form-urlencoded
           force: yes
           follow_redirects: yes
