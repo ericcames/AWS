@@ -2,19 +2,15 @@
   - name: Get instances info
     hosts: localhost
     connection: local
-    gather_facts: yes
-    vars:
-       aws_access_key: ''
-       aws_secret_key: ''
-       region: ''
-       name: ''
-
+    gather_facts: no
+  
     tasks:
 
       - name: Get instances id with tag {{name}} in {{region}}
         amazon.aws.ec2_instance_info:
           region: "{{region}}"
-        
-      - name:
+        register: ec2_node_info
+
+      - name: foobar
         ansible.builtin.debug:
-          var: ansible_facts
+          msg: "{{ec2_node_info.public_dns_name}}"
