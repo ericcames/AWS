@@ -28,4 +28,4 @@
           method: POST
           return_content: yes
           headers:
-            Cookie: "{{ new_token.cookies_string }}"
+            Cookie: "{{ new_token.json.token }}"
