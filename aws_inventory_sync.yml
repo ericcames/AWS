@@ -24,7 +24,7 @@
 
       - name: Kick off an inventory sync
         ansible.builtin.uri:
-          url: "https://{{ tower_url }}/api/v2/inventory_sources/72/update/"
+          url: "https://{{ tower_url }}/api/v2/inventory_sources/{{ inventory_id }}/update/"
           headers:
             Authorization: "Bearer {{ new_token.json.token }}"
             Content-Type: "application/json"
