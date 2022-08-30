@@ -1,16 +1,15 @@
 ---
   - name: Get instances info
     hosts: localhost
-    connection: local
-    gather_facts: no
-  
+    gather_facts: no'
+
     tasks:
 
-      - name: Get instances id with tag {{servername}} in {{region}}
-        amazon.aws.ec2_instance_info:
-          region: "{{region}}"
-        register: ec2_node_info
+    - name: "Get instances id with tag {{servername}} in {{region}}"
+      amazon.aws.ec2_instance_info:
+        region: "{{region}}"
+      register: ec2_node_info
 
-      - name: Printing the public dns name
-        ansible.builtin.debug:
-          msg:  "{{ec2_node_info.instance_ids}}"
+    - name: Printing the public dns name
+      ansible.builtin.debug:
+        msg:  "{{ec2_node_info.instance_ids}}"
