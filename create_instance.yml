@@ -48,4 +48,4 @@
 
     - name: Pausing for 3 minutes to allow the machine to come up
       ansible.builtin.pause:
-        minutes: 3
+        minutes: 2
