@@ -14,7 +14,7 @@
           password: "{{ password }}"
           validate_certs: no
           force_basic_auth: yes
-          status_code: 201
+          status_code: 301
           return_content: yes       
         register: token
 
