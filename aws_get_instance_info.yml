@@ -17,4 +17,4 @@
         
       - name:
         ansible.builtin.debug:
-          msg: "{{ public_dns_name }}"
+          var: ansible_facts
