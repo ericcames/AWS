@@ -8,15 +8,19 @@
 
       - name: Login to a form based webpage, then use the returned cookie to access the app in later tasks
         ansible.builtin.uri:
-          url: "https://{{ tower_url }}/api/v2/tokens"
+          url: "https://{{ tower_url }}/api/v2/tokens/"
           method: POST
           user: "{{ username }}"
           password: "{{ password }}"
           validate_certs: no
           force_basic_auth: yes
-          status_code: 301
+          status_code: 201
           return_content: yes       
-        register: token
+        register: new_token
+
+      - name: Debug token
+        debug: 
+          msg: "{{ new_token.json.token }}"
 
       - name: AWS Inventory Sync
         ansible.builtin.uri:
