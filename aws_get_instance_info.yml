@@ -10,7 +10,3 @@
         amazon.aws.ec2_instance_info:
           region: "{{region}}"
         register: ec2_node_info
-
-      - name: foobar
-        ansible.builtin.debug:
-          msg: "The Public DNS name is  {{ec2_node_info.public_dns_name}}"
