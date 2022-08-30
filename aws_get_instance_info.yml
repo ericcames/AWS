@@ -2,7 +2,7 @@
   - name: Get instances info
     hosts: localhost
     connection: local
-    gather_facts: no
+    gather_facts: yes
     vars:
        aws_access_key: ''
        aws_secret_key: ''
