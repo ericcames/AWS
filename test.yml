@@ -11,6 +11,8 @@
           url: https://ericames.ddns.net/api/login/
           method: POST
           body_format: form-urlencoded
+          force: yes
+          follow_redirects: yes
           body:
             name: "{{ username }}"
             password: "{{ password}}"
