@@ -13,4 +13,4 @@
 
       - name: foobar
         ansible.builtin.debug:
-          msg: "{{ec2_node_info}}"
+          msg: "{{ec2_node_info.instances.public_dns_name}}"
