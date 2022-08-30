@@ -30,10 +30,5 @@
             Content-Type: "application/json"
           validate_certs: no
           follow_redirects: all
-          return_content: yes
+          return_content: no
           method: "POST"
-        register: output
-
-      - name: Print output
-        debug:
-          msg: "{{ output }}"
