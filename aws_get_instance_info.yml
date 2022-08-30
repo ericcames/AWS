@@ -14,12 +14,10 @@
      - name: Get instances id with tag {{name}} in {{region}}
        amazon.aws.ec2_instance_info:
         region: "{{region}}"
-        #filters:
-        #  "tag:Name": "{{name}}"
-      # register: instance_info
+        
      - name:
        debug:
-          msg: "http://{{public_dns_name}}"
+          msg: "http://{{ ansible_facts['public_dns_name'] }}"
      #- name:
      #  debug:
      #     msg: "{{instance_info.instances[0].instance_id}}"
