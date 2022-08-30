@@ -19,7 +19,7 @@
       # register: instance_info
      - name:
        debug:
-          msg: public_dns_name
+          msg: "{{public_dns_name}}"
      #- name:
      #  debug:
      #     msg: "{{instance_info.instances[0].instance_id}}"
