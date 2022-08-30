@@ -49,10 +49,3 @@
     - name: Pausing for 3 minutes to allow the machine to come up
       ansible.builtin.pause:
         minutes: 3
-
-    - name: Refresh inventory to ensure new instances exist in inventory
-      ansible.builtin.meta: refresh_inventory
-
-    - name: Pausing for 1 minutes to allow the dynamic inventory to sync
-      ansible.builtin.pause:
-        minutes: 1

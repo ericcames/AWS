@@ -33,3 +33,7 @@
           return_content: no
           method: "POST"
           status_code: 202
+
+      - name: Pausing for 1 minutes to allow the dynamic inventory to sync
+        ansible.builtin.pause:
+          minutes: 1
