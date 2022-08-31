@@ -5,11 +5,11 @@
 
     tasks:
 
-    - name: "Get instances id with tag {{servername}} in {{region}}"
+    - name: "Get instances in {{region}}"
       amazon.aws.ec2_instance_info:
         region: "{{region}}"
       register: foobar
 
     - name: Printing the public dns name
       ansible.builtin.debug:
-        msg:  "{{foobar["public_ip_address"]}}"
+        msg:  "{{foobar.public_ip_address}}"
