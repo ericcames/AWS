@@ -12,4 +12,4 @@
 
     - name: Printing the public dns name
       ansible.builtin.debug:
-        msg:  "{{foobar['public_dns_name']}}"
+        msg:  "{{foobar["public_ip_address"]}}"
