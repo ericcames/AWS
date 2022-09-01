@@ -21,7 +21,7 @@
           secure: try
           username: "{{ username }}"
           password: "{{ password }}"
-          subject: AAP Daily Demo
-          body: "This server was just built and will be up until 6 pm PHX time.  http://{{ ec2_instance_info.instances[0].public_dns_name }}"
+          subject: Ansible Automation Platform (AAP) Daily Demo
+          body: "This server was just built using AAP.  The server will be destroyed at 6 pm PHX time. http://{{ ec2_instance_info.instances[0].public_dns_name }}"
           from: "{{ mailfrom }}"
           to: "{{ mailto }}"
