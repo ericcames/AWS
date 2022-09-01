@@ -8,8 +8,8 @@
       - name: "Get instances in {{region}}"
         amazon.aws.ec2_instance_info:
           region: "{{region}}"
-        register: foobar
+        register: ec2_instance_info
 
       - name: Printing the public dns name
         ansible.builtin.debug:
-          msg:  "{{foobar}}"
+          msg:  "{{ ec2_instance_info.instance[0].public_dns_name }}"
