@@ -32,6 +32,7 @@
       amazon.aws.ec2_instance:
         name: "Web Server"
         region: "{{region}}"
+        availability_zone: us-west-2a
         key_name: "zigfreed-ssh-key"
         vpc_subnet_id: "{{vpc_subnet_id}}"
         instance_type: "{{instance_type}}"
