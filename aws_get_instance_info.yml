@@ -25,4 +25,3 @@
           body: "This server was just built using AAP.  The server will be destroyed at 6 pm PHX time. http://{{ ec2_instance_info.instances[0].public_dns_name }}"
           from: "{{ mailfrom }}"
           to: "{{ mailto }}"
-          bcc: "{{ bccto }}"
