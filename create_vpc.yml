@@ -2,7 +2,7 @@
   - name: Create AWS VPC
     hosts: localhost
     connection: local
-    gather_facts: no
+    gather_facts: yes
     vars:
        aws_access_key: '' # passed from Ansible Controller Credentials
        aws_secret_key: '' # passed from Ansible Controller Credentials
@@ -19,7 +19,7 @@
 
     - name: Capture the create date in a variable called create_date
       ansible.builtin.set_fact: 
-        create_date: "{{ 'ansible_date_time.date' }}"
+        create_date: "{{ var: ansible_date_time.date }}"
         cacheable: yes
     
     - name: Echoing the create_date
