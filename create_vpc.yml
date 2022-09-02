@@ -15,14 +15,19 @@
 
     tasks:
 
+    - name: Set timezone to America/Phoenix
+      community.general.timezone:
+        name: America/Phoenix
+
+    - name: Record the vpc start time 
+      ansible.builtin.command:
+        cmd: "date '+%H:%M:%S'"
+      register: vpc_start_time
+
     - name: Capture the create vpc start time
-      ansible.builtin.set_fact: 
-        vpc_create_start_time: "{{ ansible_date_time.time }}"
-        cacheable: yes
-    
-    - name: Echoing the create vpc start time
-      ansible.builtin.debug: 
-        var: vpc_create_start_time
+      ansible.builtin.set_stats:
+        data:
+          vpc_create_start_time: "{{ vpc_start_time }}"
   
     - name: Create VPC {{ vpc_name }}_{{user_name}} in {{ region }}
       amazon.aws.ec2_vpc_net:
