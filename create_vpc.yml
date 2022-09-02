@@ -19,7 +19,7 @@
 
     - name: Capture the create date in a variable called create_date
       ansible.builtin.set_fact: 
-        create_date: 'ansible_date_time.date'
+        create_date: "{{ 'ansible_date_time.date' }}"
         cacheable: yes
     
     - name: Echoing the create_date
@@ -28,7 +28,7 @@
 
     - name: Capture the create vpc start time
       ansible.builtin.set_fact: 
-        vpc_create_start_time: 'ansible_date_time.time'
+        vpc_create_start_time: "{{ 'ansible_date_time.time' }}"
         cacheable: yes
     
     - name: Echoing the create vpc start time
