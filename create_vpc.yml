@@ -2,7 +2,7 @@
   - name: Create AWS VPC
     hosts: localhost
     connection: local
-    gather_facts: yes
+    gather_facts: no
     vars:
        aws_access_key: '' # passed from Ansible Controller Credentials
        aws_secret_key: '' # passed from Ansible Controller Credentials
