@@ -41,11 +41,11 @@
             DeletebBy: "{{deleteby}}"
         register: my_vpc
 
-      - name: Display my_vpc.vpc.id info for "{{vpc_name}}"
+      - name: "Display my_vpc.vpc.id info for {{vpc_name}}"
         ansible.builtin.debug:
           var: my_vpc.vpc.id
 
-      - name: create security group {{ ec2_security_group_name }}
+      - name: "create security group {{ ec2_security_group_name }}"
         amazon.aws.ec2_group:
           name: "{{ ec2_security_group_name }}"
           description: Security group with rule descriptions created by Ansible
@@ -82,7 +82,7 @@
           - onlyvpc
         register: my_security_group
 
-      - name: Create {{ ec2_vpc_subnet_name }} subnet
+      - name: "Create {{ ec2_vpc_subnet_name }} subnet"
         amazon.aws.ec2_vpc_subnet:
           state: present
           vpc_id: "{{ my_vpc.vpc.id }}"
@@ -101,7 +101,7 @@
           - onlyvpc
         register: my_vpc_subnet
 
-      - name: Create IGW "{{ ec2_igw_name }}" for {{ vpc_name }}_{{user_name}}
+      - name: "Create IGW {{ ec2_igw_name }} for {{ vpc_name }}_{{user_name}}"
         amazon.aws.ec2_vpc_igw:
           vpc_id: "{{ my_vpc.vpc.id }}"
           region: "{{ region }}"
