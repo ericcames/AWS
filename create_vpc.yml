@@ -25,7 +25,7 @@
           data:
             vpc_create_start_time: "{{ vpc_start_time }}"
   
-      - name: Create VPC {{ vpc_name }}_{{user_name}} in {{ region }}
+      - name: "Create VPC {{ vpc_name }}_{{user_name}} in {{ region }}"
         amazon.aws.ec2_vpc_net:
           name: "{{ vpc_name }}_{{user_name}}"
           cidr_block: "{{ vpc_cidr }}"
