@@ -17,7 +17,7 @@
 
       - name: "Playbook create_vpc.yml starting"
         community.general.syslogger:
-          ident: "Playbook create_vpc.yml"
+          ident: "create_vpc.yml"
           msg: "starting playbook create_vpc.yml"
           facility: syslog
           priority: info
