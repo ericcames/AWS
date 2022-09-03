@@ -59,6 +59,6 @@
           Contact: "{{my_email_address}}"
           DeletebBy: "{{ec2_ansible_group}}"
 
-    - name: Pausing for 3 minutes to allow the machine to come up
+    - name: Pausing for 2 minutes to allow the machine to come up
       ansible.builtin.pause:
         minutes: 2
