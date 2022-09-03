@@ -2,7 +2,19 @@
 - name: Linux post install procedures
   hosts: all
   gather_facts: true
+  
   tasks:
+  
+    - name: Record the post_install_time
+      ansible.builtin.command:
+        cmd: "date '+%H:%M:%S'"
+      register: post_install_time_pre
+
+    - name: Capture the post_install_time
+      ansible.builtin.set_stats:
+        data:
+          post_install_time: "{{ post_install_time_pre.stdout }}"
+
     - name: Upgrade all packages
       ansible.builtin.yum:
         name: '*'

@@ -5,6 +5,16 @@
   
   tasks:
     
+    - name: Record the lamp_time
+      ansible.builtin.command:
+        cmd: "date '+%H:%M:%S'"
+      register: lamp_time_pre
+
+    - name: Capture the lamp_time
+      ansible.builtin.set_stats:
+        data:
+          lamp_time: "{{ lamp_time_pre.stdout }}"
+    
     - name: Install the latest version of Firewalld, Apache, Mariadb, php
       ansible.builtin.dnf:
         name: 
