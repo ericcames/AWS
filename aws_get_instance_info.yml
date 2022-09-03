@@ -4,17 +4,7 @@
     gather_facts: no
 
     tasks:
-
-      - name: Record the completion_time
-        ansible.builtin.command:
-          cmd: "date '+%H:%M:%S'"
-        register: completion_time_pre
-
-      - name: Capture the completion_time
-        ansible.builtin.set_stats:
-          data:
-            completion_time: "{{ completion_time_pre.stdout }}"
-      
+    
       - name: "Get instances in {{region}}"
         amazon.aws.ec2_instance_info:
           region: "{{region}}"
