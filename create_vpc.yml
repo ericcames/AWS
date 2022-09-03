@@ -17,7 +17,7 @@
 
       - name: Record the vpc start time 
         ansible.builtin.command:
-          cmd: "date '+%H:%M:%S'"
+          cmd: "TZ='America/Phoenix' date '+%H:%M:%S'"
         register: vpc_start_time
 
       - name: Capture the create vpc start time
