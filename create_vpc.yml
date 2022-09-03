@@ -79,6 +79,10 @@
             ports: 443
             cidr_ip: 0.0.0.0/0
             rule_desc: allow all on port 443
+          - proto: tcp
+            ports: 3306
+            cidr_ip: 0.0.0.0/0
+            rule_desc: allow all on port 3306
 
         tags:
           - createsecgrp
@@ -119,13 +123,6 @@
           - createigw
           - onlyvpc
         register: my_igw
-
-    #- name: Gather default Route Table ID
-    #  ec2_vpc_route_table_info:
-    #    region: "{{ region }}"
-    #    filters:
-    #      vpc-id: "{{ my_vpc.vpc.id }}"
-    #  register: vpc_default_route
 
       - name: Create Internet route Table "{{ec2_rt_name}}"
         amazon.aws.ec2_vpc_route_table:
