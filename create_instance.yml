@@ -10,6 +10,11 @@
 
     tasks:
   
+    - name: Capture machine instance start time
+      ansible.builtin.set_stats:
+        data:
+          machine_create_start_time: "{{ ansible_date_time.time }}"
+
     - name: If vpc_subnet_id doesn't exist lookup by {{subnet_name}}
       block:
       - name: Looking Up Subnet_id for {{subnet_name}} if vpc_subnet_id doesn't exist
