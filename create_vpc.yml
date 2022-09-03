@@ -20,6 +20,7 @@
           ident: "create_vpc.yml"
           msg: "starting playbook create_vpc.yml"
           log_pid: true
+        delegate_to: 127.0.0.1
 
       # Gather the start time to use in a later playbook
       - name: Record the vpc start time 
