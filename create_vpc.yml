@@ -15,10 +15,6 @@
 
     tasks:
 
-      - name: Set timezone to America/Phoenix
-        community.general.timezone:
-          name: America/Phoenix
-
       - name: Record the vpc start time 
         ansible.builtin.command:
           cmd: "date '+%H:%M:%S'"
