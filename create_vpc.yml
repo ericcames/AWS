@@ -2,7 +2,7 @@
   - name: Create AWS VPC
     hosts: localhost
     connection: local
-    gather_facts: yes
+    gather_facts: no
     vars:
        aws_access_key: '' # passed from Ansible Controller Credentials
        aws_secret_key: '' # passed from Ansible Controller Credentials
@@ -15,11 +15,20 @@
 
     tasks:
 
+      - name: "Playbook create_vpc.yml starting"
+        community.general.syslogger:
+          ident: "Playbook create_vpc.yml"
+          msg: "starting"
+          priority: "info"
+
+      # Gather the start time to use in a later playbook
       - name: Record the vpc start time 
         ansible.builtin.command:
           cmd: "date '+%H:%M:%S'"
+          delegate_to: 127.0.0.1
         register: vpc_create_time_pre
 
+      # Make the start time available to other playbooks
       - name: Capture the create vpc_create_time
         ansible.builtin.set_stats:
           data:
