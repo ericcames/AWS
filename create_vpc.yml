@@ -19,8 +19,6 @@
         community.general.syslogger:
           ident: "create_vpc.yml"
           msg: "starting playbook create_vpc.yml"
-          facility: syslog
-          priority: info
           log_pid: true
 
       # Gather the start time to use in a later playbook
