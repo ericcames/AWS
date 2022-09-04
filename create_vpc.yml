@@ -15,14 +15,6 @@
 
     tasks:
 
-      # Log the start of this playbook in /var/log/messages
-      - name: Logging the start of the create_vpc.yml playbook
-        community.general.syslogger:
-          msg: "ansible playbook create_vpc.yml starting"
-        #args: 
-        #  executable: /bin/bash
-        #delegate_to: 127.0.0.1
-
       # Gather the start time to use in a later playbook
       - name: Record the vpc start time 
         ansible.builtin.command:
