@@ -17,7 +17,7 @@
 
       # Log the start of this playbook in /var/log/messages
       - name: Logging the start of the create_vpc.yml playbook
-        ansible.builtin.command:
+        ansible.builtin.shell:
           cmd: "logger -p info ansible playbook create_vpc.yml starting"
         delegate_to: 127.0.0.1
 
