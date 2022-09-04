@@ -19,7 +19,8 @@
       - name: Logging the start of the create_vpc.yml playbook
         ansible.builtin.shell:
           cmd: "/bin/logger -p info playbook create_vpc.yml starting -t ansible -n 127.0.0.1"
-          args: /bin/bash
+        args: 
+          executable: /bin/bash
         delegate_to: 127.0.0.1
 
       # Gather the start time to use in a later playbook
