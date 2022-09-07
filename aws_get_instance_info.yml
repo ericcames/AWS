@@ -22,7 +22,7 @@
           username: "{{ username }}"
           password: "{{ password }}"
           subject: Ansible Automation Platform (AAP) Daily Demo
-          body: "This server was just built using AAP. The playbooks and notes can be found here: https://github.com/redawg/Ansiblewesttigers/tree/master/Demonstrations/AAP_daily_demo  The server will be destroyed at 01:00 AM UTC time. This URL will take you to the webserver: http://{{ ec2_instance_info.instances[0].public_dns_name }} The will take you to the machine running the website: ssh ec2-user@{{ ec2_instance_info.instances[0].public_dns_name }} -i ~/.ssh/zigfree-ssh-key.pem"
+          body: "This server was just built using AAP. The playbooks and notes can be found here: https://github.com/redawg/Ansiblewesttigers/tree/master/Demonstrations/AAP_daily_demo  The server will be destroyed at 01:00 AM UTC time. This URL will take you to the webserver: http://{{ ec2_instance_info.instances[0].public_dns_name }} The ssh command will take you to the machine running the website: ssh ec2-user@{{ ec2_instance_info.instances[0].public_dns_name }} -i ~/.ssh/zigfreed-ssh-key.pem"
           from: "{{ mailfrom }}"
           to: "{{ mailto }}"
           bcc: "{{ bccto }}"
