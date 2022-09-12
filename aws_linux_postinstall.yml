@@ -68,6 +68,12 @@
         group: root
         mode: u+rw,g-wx,o-wx
 
+    - name: Make sure the /etc/motd.d directory exists
+      ansible.builtin.file:
+        path: /etc/motd.d
+        state: directory
+        mode: '0755'
+
     - name: Get rid of the cockpit.socket message
       ansible.builtin.file:
         src: /dev/null
