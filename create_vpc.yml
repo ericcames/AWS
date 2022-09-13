@@ -76,9 +76,9 @@
             cidr_ip: 0.0.0.0/0
             rule_desc: allow all on port 80
           - proto: tcp
-            ports: 443
+            ports: 9090
             cidr_ip: 0.0.0.0/0
-            rule_desc: allow all on port 443
+            rule_desc: allow all on port 9090 cockpit
           - proto: tcp
             ports: 3306
             cidr_ip: 0.0.0.0/0
