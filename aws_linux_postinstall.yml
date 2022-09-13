@@ -91,6 +91,32 @@
         group: root
         state: link
       when: "ansible_distribution_release != 'Maipo'"
+
+    - name: Install the latest version of cockpit
+      ansbile.builtin.dnf:
+        name: cockpit
+        state: latest
+
+    - name: Copy the /etc/issue.cockpit into place
+      ansible.builtin.copy:
+        src: files/issue.cockpit
+        dest: /etc/issue.cockpit
+        owner: root
+        group: root
+        mode: u+rw,g-wx,o-wx
+
+    - name: Copy the /etc/cockpit/cockpit.conf into place
+      ansible.builtin.copy:
+        src: files/cockpit.conf
+        dest: /etc/cockpit/cockpit.conf
+        owner: root
+        group: root
+        mode: u+rw,g-wx,o-wx
     
+    - name: Enable the cockpit service
+      ansible.builtin.systemd:
+        name: cockpit
+        enabled: yes
+
     - name: Unconditionally reboot the machine with all defaults
       ansible.builtin.reboot:
