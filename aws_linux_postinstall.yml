@@ -115,7 +115,7 @@
     
     - name: Enable the cockpit service
       ansible.builtin.systemd:
-        name: cockpit
+        name: cockpit.service
         state: started
         enabled: yes
 
