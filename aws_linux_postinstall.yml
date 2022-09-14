@@ -93,7 +93,7 @@
       when: "ansible_distribution_release != 'Maipo'"
 
     - name: Install the latest version of cockpit
-      ansbile.builtin.dnf:
+      ansible.builtin.dnf:
         name: cockpit
         state: latest
 
