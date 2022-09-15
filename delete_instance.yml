@@ -20,11 +20,11 @@
     - name:
       ansible.builtin.debug:
          msg: "{{instance_info.instances[0].instance_id}}"
-      when: "{{instance_info.instances[0].instance_id}}" is defined
+      when: instance_info.instances[0].instance_id is defined
 
     - name: Setting ec2 {{servername}} to absent
       amazon.aws.ec2_instance:
         region: "{{region}}"
         state: absent
         instance_ids: "{{instance_info.instances[0].instance_id}}"
-      when: "{{instance_info.instances[0].instance_id}}" is defined
+      when: instance_info.instances[0].instance_id is defined
