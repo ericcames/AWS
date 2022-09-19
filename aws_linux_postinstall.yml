@@ -113,15 +113,13 @@
         group: root
         mode: u+rw,g-wx,o-wx
     
-    - name: Enable the cockpit service
-      ansible.builtin.systemd:
-        name: cockpit
-        state: started
-        enabled: yes
-    
-    - name: Pausing for 1 minutes to allow the dynamic inventory to sync
-      ansible.builtin.pause:
-        minutes: 1
+    - name: Enable the cockpit socket
+      ansible.builtin.command:
+        cmd: systemctl enable cockpit.socket
 
+    - name: Start the cockpit socket
+      ansible.builtin.command:
+        cmd: systemctl start cockpit.socket
+    
     - name: Unconditionally reboot the machine with all defaults
       ansible.builtin.reboot:
