@@ -118,6 +118,10 @@
         name: cockpit
         state: started
         enabled: yes
+    
+    - name: Pausing for 1 minutes to allow the dynamic inventory to sync
+      ansible.builtin.pause:
+        minutes: 1
 
     - name: Unconditionally reboot the machine with all defaults
       ansible.builtin.reboot:
