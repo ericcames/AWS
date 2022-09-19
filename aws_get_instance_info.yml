@@ -8,6 +8,8 @@
       - name: "Get instances in {{region}}"
         amazon.aws.ec2_instance_info:
           region: "{{region}}"
+          filters:
+            instance-state-name: [ "running"]
         register: ec2_instance_info
 
       - name: Printing the public dns name
