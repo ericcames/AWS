@@ -4,3 +4,4 @@ collections:
 - name: amazon.aws
 - name: ansible.posix
 - name: community.aws
+- name: servicenow.itsm
