@@ -27,17 +27,7 @@
         ansible.builtin.set_stats:
           data:
             vpc_create_time: "{{ vpc_create_time_pre.stdout }}"
-
-      - name: Retrieve catalog request sysid
-        servicenow.itsm.api_info:
-          resource: sc_req_item
-          sysparm_query: numberSTARTSWITH{{ ticket_number }}
-        register: result
-
-      - name: print the result
-        ansible.builtin.debug:
-          var: result
-
+      
       - name: "Create VPC {{ vpc_name }}_{{user_name}} in {{ region }}"
         amazon.aws.ec2_vpc_net:
           name: "{{ vpc_name }}_{{user_name}}"
