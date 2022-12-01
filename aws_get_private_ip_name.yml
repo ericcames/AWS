@@ -1,5 +1,5 @@
 ---
-  - name: Update etc hosts 
+  - name: Get private ip and dns name
     hosts: localhost
     gather_facts: no
 
@@ -17,21 +17,15 @@
           msg:  "{{ ec2_instance_info.instances[0].private_ip_address }}"
 
       - name: Setting the private_ip variable
-        ansible.builtin.set_fact:
-          private_ip: "{{ ec2_instance_info.instances[0].private_ip_address }}"
+        ansible.builtin.set_stats:
+          data:
+            private_ip: "{{ ec2_instance_info.instances[0].private_ip_address }}"
       
       - name: Print the private dns name
         ansible.builtin.debug:
           msg:  "{{ ec2_instance_info.instances[0].private_dns_name }}"
       
       - name: Setting the private_name variable
-        ansible.builtin.set_fact:
-          private_name: "{{ ec2_instance_info.instances[0].private_dns_name }}"
-
-      - name: Copy the index.html for the website
-        ansible.builtin.template:
-          src: etc.hosts.j2
-          dest: /etc/hosts
-          owner: root
-          group: root
-          mode: u+rw,g-wx,o-wx
+        ansible.builtin.set_stats:
+          data:
+            private_name: "{{ ec2_instance_info.instances[0].private_dns_name }}"

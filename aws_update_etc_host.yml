@@ -1,0 +1,23 @@
+---
+  - name: Update the etc host file
+    hosts: all
+    connection: local
+    gather_facts: no
+
+    tasks:
+
+      - name: Debug private_ip
+        ansible.builtin.debug:
+          var: private_ip
+
+      - name: Debug private_name
+        ansible.builtin.debug:
+          var: private_name
+
+      - name: Put the private ip and dns name into the etc hosts file
+        ansible.builtin.template:
+          src: etc.hosts.j2
+          dest: /etc/hosts
+          owner: root
+          group: root
+          mode: u+rw,g-wx,o-wx
