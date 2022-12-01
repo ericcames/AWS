@@ -1,7 +1,6 @@
 ---
   - name: Update the etc host file
     hosts: all
-    connection: local
     gather_facts: no
 
     tasks:
