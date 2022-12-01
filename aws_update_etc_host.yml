@@ -19,4 +19,4 @@
           dest: /etc/hosts
           owner: root
           group: root
-          mode: u+rw,g-wx,o-wx
+          mode: u-x,g-wx,o-wx
