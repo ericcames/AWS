@@ -12,10 +12,18 @@
             instance-state-name: [ "running"]
         register: ec2_instance_info
 
-      - name: Get the private ip address
+      - name: Print the private ip address
         ansible.builtin.debug:
           msg:  "{{ ec2_instance_info.instances[0].private_ip_address }}"
+
+      - name: Setting the private_ip variable
+        ansible.builtin.set_fact:
+          private_ip: "{{ ec2_instance_info.instances[0].private_ip_address }}"
       
-      - name: Get the private dns name
+      - name: Print the private dns name
         ansible.builtin.debug:
           msg:  "{{ ec2_instance_info.instances[0].private_dns_name }}"
+      
+      - name: Setting the private_name variable
+        ansible.builtin.set_fact:
+          private_name: "{{ ec2_instance_info.instances[0].private_dns_name }}"
