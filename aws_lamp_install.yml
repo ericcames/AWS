@@ -1,6 +1,6 @@
 ---
 - name: Setup a LAMP Stack
-  hosts: all
+  hosts: "{{ my_server }}"
   gather_facts: false
   
   tasks:
