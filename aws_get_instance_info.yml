@@ -6,11 +6,12 @@
     tasks:
     
       - name: "Get instances in {{region}}"
+        register: ec2_instance_info
         amazon.aws.ec2_instance_info:
           region: "{{region}}"
           filters:
+            "tag:Name": "{{ servername }}"
             instance-state-name: [ "running"]
-        register: ec2_instance_info
 
       - name: Printing the public dns name
         ansible.builtin.debug:
@@ -24,7 +25,7 @@
           username: "{{ username }}"
           password: "{{ password }}"
           subject: Ansible Automation Platform (AAP) Daily Demo
-          body: "System {{ ansible_hostname }} has been successfully provisioned using AAP. The playbooks and notes can be found here: https://github.com/redawg/Ansiblewesttigers/tree/master/Demonstrations/AAP_daily_demo  The server will be destroyed at 01:00 AM UTC time. This URL will take you to the webserver: http://{{ ec2_instance_info.instances[0].public_dns_name }} You can admin the machine here: https://{{ ec2_instance_info.instances[0].public_dns_name }}:9090 or use ssh command to login: ssh ec2-user@{{ ec2_instance_info.instances[0].public_dns_name }}"
+          body: "System {{ ec2_instance_info.instances[0].public_dns_name }} has been successfully provisioned using AAP. The playbooks and notes can be found here: https://github.com/redawg/Ansiblewesttigers/tree/master/Demonstrations/AAP_daily_demo  The server will be destroyed at 01:00 AM UTC time. This URL will take you to the webserver: http://{{ ec2_instance_info.instances[0].public_dns_name }} You can admin the machine here: https://{{ ec2_instance_info.instances[0].public_dns_name }}:9090 or use ssh command to login: ssh ec2-user@{{ ec2_instance_info.instances[0].public_dns_name }}"
           from: "{{ mailfrom }}"
           to: "{{ mailto }}"
           bcc: "{{ bccto }}"
