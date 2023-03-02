@@ -10,8 +10,8 @@
 
     tasks:
 
-    - name: Adding error handling
-      block:
+      - name: Adding error handling
+        block:
 
           # Gather the start time to use in a later playbook
           - name: Record the machine_create_time
