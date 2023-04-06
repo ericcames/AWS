@@ -18,11 +18,11 @@
         data:
           post_install_time: "{{ post_install_time_pre.stdout }}"
 
-    - name: Upgrade all packages
-      ansible.builtin.yum:
-        name: '*'
-        security: yes
-        state: latest
+    # - name: Upgrade all packages
+    #   ansible.builtin.yum:
+    #     name: '*'
+    #     security: yes
+    #     state: latest
    
     - name: Copy the sshd-banner file into place
       ansible.builtin.copy:
@@ -121,5 +121,5 @@
       ansible.builtin.command:
         cmd: systemctl start cockpit.socket
     
-    - name: Unconditionally reboot the machine with all defaults
-      ansible.builtin.reboot:
+    # - name: Unconditionally reboot the machine with all defaults
+    #   ansible.builtin.reboot:
