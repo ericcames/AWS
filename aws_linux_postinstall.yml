@@ -32,24 +32,24 @@
       args:
         executable: /bin/bash
 
-    # - name: patching my_packages
-    #   ansible.builtin.shell: "dnf update -y {{ my_packages.stdout_lines | list }}"
-    #   args:
-    #     executable: /bin/bash
+    - name: patching my_packages
+      ansible.builtin.shell: "dnf update -y {{ my_packages.stdout_lines | join(' ') }}"
+      args:
+        executable: /bin/bash
 
     # - name: print my_packages
     #   loop: "{{ my_packages.stdout_lines }}"
     #   ansible.builtin.debug:
     #     msg: "{{ item }}"
 
-    - name: Creating a set_fact
-      loop: "{{ my_packages.stdout_lines }}"
-      ansible.builtin.set_fact:
-        my_packages_oneline: "{{ my_packages_oneline|default([]) + [item] }}"
+    # - name: Creating a set_fact
+    #   loop: "{{ my_packages.stdout_lines }}"
+    #   ansible.builtin.set_fact:
+    #     my_packages_oneline: "{{ my_packages_oneline|default([]) + [item] }}"
     
-    - name: print my_packages_oneline
-      ansible.builtin.debug:
-        msg: "{{ my_packages_oneline|join(' ')}}"
+    # - name: print my_packages_oneline
+    #   ansible.builtin.debug:
+    #     msg: "{{ my_packages_oneline|join(' ')}}"
 
     - name: Copy the sshd-banner file into place
       ansible.builtin.copy:
