@@ -45,7 +45,7 @@
     - name: Creating a set_fact
       loop: "{{ my_packages.stdout_lines }}"
       ansible.builtin.set_fact:
-        my_packages_oneline: "{{ my_packages_oneline + [item] }}"
+        my_packages_oneline: "{{ my_packages_oneline|default([]) + [item] }}"
     
     - name: print my_packages_oneline
       ansible.builtin.debug:
