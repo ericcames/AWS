@@ -18,11 +18,18 @@
         data:
           post_install_time: "{{ post_install_time_pre.stdout }}"
 
-    # - name: Upgrade all packages
-    #   ansible.builtin.yum:
-    #     name: '*'
-    #     security: yes
-    #     state: latest
+    - name: copy update script into place
+      ansible.builtin.copy:
+        src: files/patching.bash
+        dest: /var/tmp/patching.bash
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: run the new patching script
+      ansible.builtin.shell: /var/tmp/patching.bash
+        args:
+          executable: /bin/bash
    
     - name: Copy the sshd-banner file into place
       ansible.builtin.copy:
