@@ -32,10 +32,13 @@
       args:
         executable: /bin/bash
 
-    - name: patching my_packages
-      ansible.builtin.shell: "dnf update -y {{ my_packages }}"
-      args:
-        executable: /bin/bash
+    # - name: patching my_packages
+    #   ansible.builtin.shell: "dnf update -y {{ my_packages.stdout.stdout }}"
+    #   args:
+    #     executable: /bin/bash
+    - name: print my_packages
+      ansible.builtin.debug:
+        var: my_packages
    
     - name: Copy the sshd-banner file into place
       ansible.builtin.copy:
