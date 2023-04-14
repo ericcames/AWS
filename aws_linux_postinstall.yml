@@ -33,6 +33,7 @@
         executable: /bin/bash
 
     - name: patching my_packages
+      when: my_packages.stdout_lines != null
       ansible.builtin.shell: "dnf update -y {{ my_packages.stdout_lines | join(' ') }}"
       args:
         executable: /bin/bash
