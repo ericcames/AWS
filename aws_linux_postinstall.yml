@@ -37,10 +37,19 @@
     #   args:
     #     executable: /bin/bash
 
-    - name: print my_packages
+    # - name: print my_packages
+    #   loop: "{{ my_packages.stdout_lines }}"
+    #   ansible.builtin.debug:
+    #     msg: "{{ item }}"
+
+    - name: Creating a set_fact
       loop: "{{ my_packages.stdout_lines }}"
+      ansible.builtin.set_fact:
+        my_packages_oneline: "{{ my_packages_oneline + item }}"
+    
+    - name: print my_packages_oneline
       ansible.builtin.debug:
-        msg: "{{ item }}"
+        var: my_packages_oneline
 
     - name: Copy the sshd-banner file into place
       ansible.builtin.copy:
