@@ -18,16 +18,22 @@
         data:
           post_install_time: "{{ post_install_time_pre.stdout }}"
 
-    - name: copy update script into place
-      ansible.builtin.copy:
-        src: files/patching.bash
-        dest: /var/tmp/patching.bash
-        owner: root
-        group: root
-        mode: '0755'
+    # - name: copy update script into place
+    #   ansible.builtin.copy:
+    #     src: files/patching.bash
+    #     dest: /var/tmp/patching.bash
+    #     owner: root
+    #     group: root
+    #     mode: '0755'
 
-    - name: run the new patching script
-      ansible.builtin.shell: /var/tmp/patching.bash
+    - name: Gather the list of packages we want to up here; excluding sudo & openssl
+      register: my_packages
+      ansible.builtin.shell: dnf list updates --security -q | grep -v Available| grep -v sudo|grep -v openssl | awk '{print $1}'
+      args:
+        executable: /bin/bash
+
+    - name: patching my_packages
+      ansible.builtin.shell: "dnf update -y {{ my_packages }}"
       args:
         executable: /bin/bash
    
