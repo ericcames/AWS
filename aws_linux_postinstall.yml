@@ -38,7 +38,7 @@
     #     executable: /bin/bash
     - name: print my_packages
       ansible.builtin.debug:
-        msg: "{{ my_packages | list}}"
+        msg: "{{ my_packages.stdout_lines | list}}"
    
     - name: Copy the sshd-banner file into place
       ansible.builtin.copy:
