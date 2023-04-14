@@ -49,7 +49,7 @@
     
     - name: print my_packages_oneline
       ansible.builtin.debug:
-        msg: "{{ my_packages_oneline|join(', ')}}"
+        msg: "{{ my_packages_oneline|join(' ')}}"
 
     - name: Copy the sshd-banner file into place
       ansible.builtin.copy:
