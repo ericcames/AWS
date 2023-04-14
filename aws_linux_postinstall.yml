@@ -38,7 +38,7 @@
     #     executable: /bin/bash
 
     - name: print my_packages
-      loop: "{{ my_packages.stdout_lines }}.split('\n')"
+      loop: "{{ my_packages.stdout_lines }}"
       ansible.builtin.debug:
         msg: "{{ item }}"
 
