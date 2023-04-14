@@ -39,8 +39,8 @@
 
     - name: print my_packages
       ansible.builtin.debug:
-        msg: "{{ my_packages.stdout_lines }}.split('\n')"
-   
+        msg: "' '.join{{ my_packages.stdout_lines }}.split('\n')"
+        
     - name: Copy the sshd-banner file into place
       ansible.builtin.copy:
         src: files/sshd-banner
