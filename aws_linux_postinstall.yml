@@ -28,8 +28,8 @@
 
     - name: run the new patching script
       ansible.builtin.shell: /var/tmp/patching.bash
-        args:
-          executable: /bin/bash
+      args:
+        executable: /bin/bash
    
     - name: Copy the sshd-banner file into place
       ansible.builtin.copy:
