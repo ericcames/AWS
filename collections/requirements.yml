@@ -5,3 +5,4 @@ collections:
 - name: ansible.posix
 - name: community.aws
 - name: servicenow.itsm
+- name: awx.awx
