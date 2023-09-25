@@ -35,7 +35,7 @@
       ansible.builtin.debug:
          msg: "{{ instance_info.instances[0].instance_id }}"
 
-    - name: Update the Windows AWS Managed Inventory
+    - name: Update the Linux AWS Managed Inventory
       awx.awx.host:
         controller_host: "https://{{ controller_url }}"
         controller_password: "{{ controller_passwd }}"
