@@ -7,19 +7,7 @@
        region: ''
        servername: ''
 
-    tasks:
-
-    - name: Get an AAP API Token and store it as new_token
-      register: new_token
-      ansible.builtin.uri:
-        url: "https://{{ controller_url }}/api/v2/tokens/"
-        method: POST
-        user: "{{ controller_user }}"
-        password: "{{ controller_passwd }}"
-        validate_certs: no
-        force_basic_auth: yes
-        status_code: 201
-        return_content: yes   
+    tasks:   
 
     - name: Get instances id with tag {{ servername }} in {{ region }}
       register: instance_info
@@ -34,17 +22,6 @@
       when: instance_info.instances[0].instance_id is defined
       ansible.builtin.debug:
          msg: "{{ instance_info.instances[0].instance_id }}"
-
-    - name: Update the Linux AWS Managed Inventory
-      awx.awx.host:
-        controller_host: "https://{{ controller_url }}"
-        controller_password: "{{ controller_passwd }}"
-        controller_username: "{{ controller_user }}"
-        controller_oauthtoken: "{{ new_token.json.token }}"
-        name: "{{ instance_info.instances[0].public_dns_name }}"
-        inventory: "Linux AWS Inventory - Managed"
-        state: present
-        enabled: true
 
     - name: Capture public dns name
       register: my_server
